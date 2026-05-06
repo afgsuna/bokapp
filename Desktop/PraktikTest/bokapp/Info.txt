@@ -1,0 +1,10 @@
+To Start
+
+IN two Separate New Terminal Run: 
+
+cd /Users/sasan/Desktop/PraktikTest/bokapp/book-client       
+ng serve
+
+
+cd /Users/sasan/Desktop/PraktikTest/bokapp/BookApi           
+dotnet run

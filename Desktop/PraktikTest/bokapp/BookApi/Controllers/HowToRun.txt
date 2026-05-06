@@ -1,0 +1,5 @@
+cd /Users/sasan/Desktop/PraktikTest/bokapp/BookApi    
+dotnet run
+
+cd /Users/sasan/Desktop/PraktikTest/bokapp/book-client
+ng serve

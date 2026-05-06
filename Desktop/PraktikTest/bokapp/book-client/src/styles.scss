@@ -1,0 +1,16 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+body {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+  background-color: #1a1a2e;
+  color: #eee;
+
+  .navbar { background-color: #16213e !important; }
+  .card { background-color: #16213e; border-color: #0f3460; color: #eee; }
+  .table { color: #eee; }
+  .form-control { background-color: #0f3460; color: #eee; border-color: #444; }
+  .modal-content { background-color: #16213e; color: #eee; }
+}

@@ -1,0 +1,57 @@
+<div class="container mt-4">
+  <h2 class="mb-4"><i class="fas fa-quote-left me-2"></i>Mina citat</h2>
+
+  <!-- Lägg till nytt citat -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Lägg till nytt citat</h5>
+      <div class="mb-2">
+        <input type="text" class="form-control" placeholder="Citat..." [(ngModel)]="newQuote.text" />
+      </div>
+      <div class="mb-2">
+        <input type="text" class="form-control" placeholder="Författare..." [(ngModel)]="newQuote.author" />
+      </div>
+      <button class="btn btn-primary" (click)="add()">
+        <i class="fas fa-plus me-2"></i>Lägg till
+      </button>
+    </div>
+  </div>
+
+  <!-- Citatslista -->
+  <div *ngIf="quotes.length === 0" class="alert alert-info">
+    <i class="fas fa-info-circle me-2"></i>Inga citat ännu!
+  </div>
+
+  <div class="card shadow-sm mb-3" *ngFor="let quote of quotes">
+    <div class="card-body">
+      <div *ngIf="editingQuote?.id !== quote.id">
+        <blockquote class="blockquote mb-0">
+          <p><i class="fas fa-quote-left me-2"></i>{{ quote.text }}</p>
+          <footer class="blockquote-footer">{{ quote.author }}</footer>
+        </blockquote>
+        <div class="mt-2">
+          <button class="btn btn-sm btn-warning me-2" (click)="startEdit(quote)">
+            <i class="fas fa-edit me-1"></i>Redigera
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="delete(quote.id)">
+            <i class="fas fa-trash me-1"></i>Radera
+          </button>
+        </div>
+      </div>
+      <div *ngIf="editingQuote?.id === quote.id">
+        <div class="mb-2">
+          <input type="text" class="form-control" [(ngModel)]="editingQuote.text" />
+        </div>
+        <div class="mb-2">
+          <input type="text" class="form-control" [(ngModel)]="editingQuote.author" />
+        </div>
+        <button class="btn btn-sm btn-success me-2" (click)="saveEdit()">
+          <i class="fas fa-save me-1"></i>Spara
+        </button>
+        <button class="btn btn-sm btn-secondary" (click)="editingQuote = null">
+          <i class="fas fa-times me-1"></i>Avbryt
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

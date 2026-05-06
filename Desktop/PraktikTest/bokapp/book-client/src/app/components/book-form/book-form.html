@@ -1,0 +1,34 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-body">
+          <h3 class="card-title mb-4">
+            <i class="fas fa-book me-2"></i>
+            {{ isEdit ? 'Redigera bok' : 'Lägg till ny bok' }}
+          </h3>
+          <div class="mb-3">
+            <label class="form-label">Titel</label>
+            <input type="text" class="form-control" [(ngModel)]="book.title" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Författare</label>
+            <input type="text" class="form-control" [(ngModel)]="book.author" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Publiceringsdatum</label>
+            <input type="date" class="form-control" [(ngModel)]="book.publishedDate" />
+          </div>
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-secondary" (click)="goBack()">
+            <i class="fas fa-arrow-left me-2"></i>Tillbaka
+            </button>
+            <button class="btn btn-primary" (click)="save()">
+              <i class="fas fa-save me-2"></i>Spara
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

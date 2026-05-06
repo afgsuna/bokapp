@@ -1,0 +1,43 @@
+<nav class="navbar navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/books" (click)="closeMenu()">
+      <i class="fas fa-book-open me-2"></i>BokApp
+    </a>
+    <div class="d-flex align-items-center gap-2">
+      <button class="btn btn-outline-light btn-sm" (click)="toggleDarkMode()">
+        <i class="fas" [ngClass]="darkMode ? 'fa-sun' : 'fa-moon'"></i>
+      </button>
+      <button class="navbar-toggler" type="button" (click)="toggleMenu()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+  <div class="container" *ngIf="menuOpen && isLoggedIn()">
+    <div class="w-100 py-2">
+      <a class="btn btn-outline-light w-100 mb-2" routerLink="/books" (click)="closeMenu()">
+        <i class="fas fa-book me-1"></i>Böcker
+      </a>
+      <a class="btn btn-outline-light w-100 mb-2" routerLink="/quotes" (click)="closeMenu()">
+        <i class="fas fa-quote-left me-1"></i>Mina citat
+      </a>
+      <button class="btn btn-outline-light w-100" (click)="logout()">
+        <i class="fas fa-sign-out-alt me-1"></i>Logga ut
+      </button>
+    </div>
+  </div>
+  <div class="container d-none d-lg-flex justify-content-between align-items-center py-1" *ngIf="isLoggedIn()">
+    <div class="d-flex gap-3">
+      <a class="nav-link text-white" routerLink="/books">
+        <i class="fas fa-book me-1"></i>Böcker
+      </a>
+      <a class="nav-link text-white" routerLink="/quotes">
+        <i class="fas fa-quote-left me-1"></i>Mina citat
+      </a>
+    </div>
+    <button class="btn btn-outline-light btn-sm" (click)="logout()">
+      <i class="fas fa-sign-out-alt me-1"></i>Logga ut
+    </button>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

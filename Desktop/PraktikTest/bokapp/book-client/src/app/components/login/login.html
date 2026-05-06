@@ -1,0 +1,35 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <div class="card shadow">
+        <div class="card-body">
+          <h3 class="card-title text-center mb-4">
+            <i class="fas fa-book-open me-2"></i>Logga in
+          </h3>
+          <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+          <div *ngIf="success" class="alert alert-success">{{ success }}</div>
+          <div class="mb-3">
+            <label class="form-label">Användarnamn</label>
+            <input type="text" class="form-control" [(ngModel)]="username" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Lösenord</label>
+            <input type="password" class="form-control" [(ngModel)]="password" />
+          </div>
+          <button class="btn btn-primary w-100 mb-2" (click)="login()">
+            <i class="fas fa-sign-in-alt me-2"></i>Logga in
+          </button>
+          <hr />
+          <p class="text-center mb-0">
+            Inget konto? <a routerLink="/register">Registrera dig</a>
+          </p>
+          <p class="text-center mt-2">
+            <a routerLink="/admin" class="text-danger">
+              <i class="fas fa-user-shield me-1"></i>Admin login
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
