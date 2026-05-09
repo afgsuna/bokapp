@@ -11,6 +11,7 @@ import { AuthService } from '../../services/auth';
   templateUrl: './register.html',
   styleUrl: './register.scss'
 })
+
 export class RegisterComponent {
   private auth = inject(AuthService);
   private router = inject(Router);
@@ -18,6 +19,7 @@ export class RegisterComponent {
   username = '';
   password = '';
   error = '';
+  success = '';
 
   register() {
     this.auth.register(this.username, this.password).subscribe({
