@@ -19,7 +19,7 @@ export class BooksComponent implements OnInit {
   books: any[] = [];
 
   ngOnInit() {
-    //console.log('Initializing BooksComponent');
+    console.log('Initializing BooksComponent');
     this.loadBooks();
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -29,6 +29,7 @@ export class BooksComponent implements OnInit {
   }
 
   loadBooks() {
+    console.log('Loading books...');
     this.bookService.getAll().subscribe({
       next: (data) => {
         this.books = [...data];
