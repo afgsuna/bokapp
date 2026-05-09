@@ -1,8 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd} from '@angular/router';
 import { QuoteService } from '../../services/quote';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-quotes',
@@ -14,6 +15,7 @@ import { QuoteService } from '../../services/quote';
 export class QuotesComponent implements OnInit {
   private quoteService = inject(QuoteService);
   private router = inject(Router);
+  private cdr = inject(ChangeDetectorRef);
 
   quotes: any[] = [];
   newQuote = { text: '', author: '' };
@@ -21,11 +23,19 @@ export class QuotesComponent implements OnInit {
 
   ngOnInit() {
     this.loadQuotes();
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.loadQuotes();
+    });
   }
 
   loadQuotes() {
     this.quoteService.getAll().subscribe({
-      next: (data) => this.quotes = data,
+      next: (data) => {
+        this.quotes = [...data];
+        this.cdr.detectChanges();
+    },
       error: () => this.router.navigate(['/login'])
     });
   }
