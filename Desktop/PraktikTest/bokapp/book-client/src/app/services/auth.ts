@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
   private http = inject(HttpClient);
-  private api = 'http://localhost:5120/api/Auth';
+  private api = 'https://bokapp-production.up.railway.app/api/Auth';
 
   register(username: string, password: string) {
     return this.http.post(`${this.api}/register`, { username, password });

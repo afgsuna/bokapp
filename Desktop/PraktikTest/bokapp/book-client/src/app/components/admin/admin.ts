@@ -30,7 +30,7 @@ export class AdminComponent implements OnInit {
   ngOnInit() {}
 
   login() {
-    this.http.post<{ token: string }>('http://localhost:5120/api/Admin/login', {
+    this.http.post<{ token: string }>('https://bokapp-production.up.railway.app/api/Admin/login', {
       username: this.username,
       password: this.password
     }).subscribe({
@@ -46,7 +46,7 @@ export class AdminComponent implements OnInit {
   }
 
   loadUsers() {
-    this.http.get<any[]>('http://localhost:5120/api/Admin/users', {
+    this.http.get<any[]>('https://bokapp-production.up.railway.app/api/Admin/users', {
       headers: this.headers()
     }).subscribe(data => this.users = data);
   }

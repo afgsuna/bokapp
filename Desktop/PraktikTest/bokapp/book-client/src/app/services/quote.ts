@@ -8,7 +8,7 @@ import { AuthService } from './auth';
 export class QuoteService {
   private http = inject(HttpClient);
   private auth = inject(AuthService);
-  private api = 'http://localhost:5120/api/Quotes';
+  private api = 'https://bokapp-production.up.railway.app/api/Quotes';
 
   private headers() {
     return new HttpHeaders({ Authorization: `Bearer ${this.auth.getToken()}` });
