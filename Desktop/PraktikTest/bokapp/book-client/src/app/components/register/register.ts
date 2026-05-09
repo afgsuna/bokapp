@@ -18,17 +18,15 @@ export class RegisterComponent {
   username = '';
   password = '';
   error = '';
-  success = '';
 
   register() {
-  this.auth.register(this.username, this.password).subscribe({
-    next: () => {
-      this.router.navigate(['/login'], { queryParams: { registered: true } });
-    },
-    error: () => {
-      this.error = 'Användarnamnet är redan taget.';
-    }
-  });
- }
- 
+    this.auth.register(this.username, this.password).subscribe({
+      next: () => {
+        this.router.navigate(['/login'], { queryParams: { registered: true } });
+      },
+      error: () => {
+        this.error = 'Användarnamnet är redan taget.';
+      }
+    });
+  }
 }
