@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, NavigationEnd } from '@angular/router';
 import { BookService } from '../../services/book';
@@ -14,6 +14,7 @@ import { filter } from 'rxjs';
 export class BooksComponent implements OnInit {
   private bookService = inject(BookService);
   private router = inject(Router);
+  private cdr = inject(ChangeDetectorRef);
 
   books: any[] = [];
 
@@ -30,6 +31,7 @@ export class BooksComponent implements OnInit {
     this.bookService.getAll().subscribe({
       next: (data) => {
         this.books = [...data];
+        this.cdr.detectChanges();
       },
       error: () => this.router.navigate(['/login'])
     });

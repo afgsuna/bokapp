@@ -46,10 +46,13 @@ export class AdminComponent implements OnInit {
   }
 
   loadUsers() {
-    this.http.get<any[]>('https://bokapp-production.up.railway.app/api/Admin/users', {
-      headers: this.headers()
-    }).subscribe(data => this.users = data);
-  }
+  this.http.get<any[]>('https://bokapp-production.up.railway.app/api/Admin/users', {
+    headers: this.headers()
+  }).subscribe({
+    next: (data) => this.users = data,
+    error: (err) => console.error('Error loading users:', err)
+  });
+}
 
   deleteUser(id: number) {
     if (confirm('Är du säker på att du vill radera användaren?')) {
