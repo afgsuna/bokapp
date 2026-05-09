@@ -11,8 +11,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // SQLite databas
+var dbPath = Environment.GetEnvironmentVariable("DATABASE_URL") ?? "Data Source=bookapp.db";
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite("Data Source=bookapp.db"));
+    options.UseSqlite(dbPath));
 
 // JWT
 var jwtKey = "superHemligNyckel1234567890ABCDEF";
