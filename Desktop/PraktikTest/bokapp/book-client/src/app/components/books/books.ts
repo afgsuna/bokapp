@@ -19,6 +19,7 @@ export class BooksComponent implements OnInit {
   books: any[] = [];
 
   ngOnInit() {
+    //console.log('Initializing BooksComponent');
     this.loadBooks();
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
