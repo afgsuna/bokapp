@@ -2,9 +2,24 @@ To Start
 
 IN two Separate New Terminal Run: 
 
-cd /Users/sasan/Desktop/PraktikTest/bokapp/book-client       
+1. cd /Users/sasan/Desktop/PraktikTest/bokapp/BookApi           
+dotnet run
+
+2. cd /Users/sasan/Desktop/PraktikTest/bokapp/book-client       
 ng serve
 
 
-cd /Users/sasan/Desktop/PraktikTest/bokapp/BookApi           
-dotnet run
+To Log in As admin:
+
+http://localhost:4200/admin
+
+Användarnamn: admin
+Lösenord: Admin123!
+
+To register 
+
+http://localhost:4200/register
+
+Live at: 
+https://transcendent-puffpuff-643882.netlify.app/login
+https://transcendent-puffpuff-643882.netlify.app/admin
